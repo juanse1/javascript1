@@ -25,9 +25,15 @@ function decrypt(mensaje, clave)
 //Función secret que recibe el mensaje, el método y la clave.
 function secret(mensaje, encriptacion, clave) 
 {
-    if(encriptacion === encrypt) return encrypt(mensaje, clave);
-    else return decrypt(mensaje, clave);
+    if(typeof(clave) == "number")
+    {
+        if(encriptacion === encrypt) return encrypt(mensaje, clave);
+        else if(encriptacion === decrypt) return decrypt(mensaje, clave);
+        else console.error("El método de encriptación debe ser 'encrypt' o 'decrypt'")
+    }
+    else console.error("La clave debe ser un número");
 }
+
 
 //casos de prueba para el punto1 de encriptación
 console.log(secret([1, 2, 3, 1, 6, 34, 23, 7, 2], encrypt, 1));
